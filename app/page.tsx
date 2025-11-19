@@ -4,8 +4,9 @@ import Link from "next/link";
 import HeroChrome from "./components/HeroChrome";
 import ProjectCard from "./components/ProjectCard";
 import CaseStudyCard from "./components/CaseStudyCard";
+import AboutSection from "./components/AboutSection"; // NEW
 import { projects } from "../data/projects";
-import { caseStudies } from "../data/CaseStudies";
+import { caseStudies } from "@data/CaseStudies";
 
 export default function HomePage() {
   const featuredProjects = projects.slice(0, 2);
@@ -13,13 +14,22 @@ export default function HomePage() {
 
   return (
     <>
+      {/* ✦ GLOBAL IMMERSIVE BACKGROUND — fog + soft light */}
+      <div className="pointer-events-none fixed inset-0 z-0 opacity-[0.14] bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.06),transparent_70%)] animate-[floatLight_14s_ease-in-out_infinite]" />
+      <div className="pointer-events-none fixed inset-0 z-0 opacity-[0.08] bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.08),transparent_55%),radial-gradient(circle_at_80%_40%,rgba(148,163,184,0.12),transparent_60%),radial-gradient(circle_at_50%_80%,rgba(59,130,246,0.08),transparent_50%)] blur-3xl" />
+
       {/* HERO — full-bleed chrome */}
       <HeroChrome />
+
+      {/* ✦ ABOUT ME SECTION — buttery scroll, your portrait, skills, resume */}
+      <section className="relative z-10 max-w-6xl mx-auto px-6 mt-20 md:mt-28">
+        <AboutSection />
+      </section>
 
       {/* WORK SECTION */}
       <section
         id="work"
-        className="relative max-w-6xl mx-auto px-6 pb-20 mt-16 md:mt-24 text-white"
+        className="relative z-10 max-w-6xl mx-auto px-6 pb-20 mt-24 text-white"
       >
         <div className="flex items-baseline justify-between gap-4 mb-8">
           <div>
@@ -46,7 +56,7 @@ export default function HomePage() {
       </section>
 
       {/* CASE STUDIES PREVIEW */}
-      <section className="relative max-w-6xl mx-auto px-6 pb-20 text-white">
+      <section className="relative z-10 max-w-6xl mx-auto px-6 pb-20 text-white">
         <div className="flex items-baseline justify-between gap-4 mb-8">
           <div>
             <h2 className="text-xs tracking-[0.32em] text-white/45 uppercase">
@@ -84,7 +94,7 @@ export default function HomePage() {
       {/* CONTACT STRIP */}
       <section
         id="contact"
-        className="border-t border-white/5 bg-black/40 backdrop-blur-md text-white"
+        className="relative z-10 border-t border-white/5 bg-black/40 backdrop-blur-md text-white"
       >
         <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
@@ -95,8 +105,8 @@ export default function HomePage() {
               Hiring for data, AI, or product design? I&rsquo;d love to talk.
             </h3>
             <p className="text-sm text-white/55 mt-2 max-w-xl">
-              Based in the US, working across time zones. Data, AI, and design
-              at the center of my work.
+              Based in the US, working across time zones.  
+              I specialize in data systems, AI reasoning, and interface craft.
             </p>
           </div>
 

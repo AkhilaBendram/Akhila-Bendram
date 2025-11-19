@@ -275,3 +275,45 @@ body {
 .animate-soft-orbit-delayed {
   animation: soft-orbit 32s ease-in-out infinite alternate;
 }
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+/* Moving spotlight for portrait */
+@keyframes spotlightPan {
+  0% { transform: translate(-20%, -10%); opacity: 0.25; }
+  50% { transform: translate(10%, 5%); opacity: 0.35; }
+  100% { transform: translate(-20%, -10%); opacity: 0.25; }
+}
+
+.portrait-spotlight {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(90,130,255,0.18), transparent 70%);
+  filter: blur(65px);
+  animation: spotlightPan 14s ease-in-out infinite;
+  pointer-events: none;
+}
+/* Soft drifting fog */
+@keyframes fogDrift {
+  0% { transform: translateY(0) scale(1); opacity: 0.18; }
+  50% { transform: translateY(-2%) scale(1.03); opacity: 0.22; }
+  100% { transform: translateY(0) scale(1); opacity: 0.18; }
+}
+
+.fog-layer {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 60% 60%, rgba(80, 110, 150, 0.06), transparent 70%);
+  filter: blur(140px);
+  animation: fogDrift 18s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}

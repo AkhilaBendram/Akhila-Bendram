@@ -1,63 +1,51 @@
+// app/case-studies/[slug]/page.tsx
+import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
-import { caseStudies } from "../../../data/CaseStudies";
+import { caseStudies } from "@data/CaseStudies";
+
+import ParallaxHero from "../components/ParrallaxHero";
+import DiagramFlow from "../components/DiagramFlow";
+import DiagramRationale from "../components/DiagramRationale";
+import DiagramMicroMotion from "../components/DiagramMicroMotion";
 
 type PageParams = Promise<{ slug: string }>;
 
-export default async function CaseStudyDetailPage({ params }: { params: PageParams }) {
+const diagramMap: Record<string, ReactNode> = {
+  "data-quality-engine": <DiagramFlow />,
+  "ai-rationale-maps": <DiagramRationale />,
+  "micro-motion-system": <DiagramMicroMotion />,
+};
+
+export default async function CaseStudyPage({
+  params,
+}: {
+  params: PageParams;
+}) {
   const { slug } = await params;
-  const study = caseStudies.find((c) => c.slug === slug);
+  const study = caseStudies.find((study) => study.slug === slug);
 
   if (!study) {
-    return notFound();
+    notFound();
   }
 
   return (
-    <article className="space-y-10">
-      <header className="space-y-3">
-        <p className="eyebrow">{study.eyebrow}</p>
-        <h1 className="heading-section text-3xl">{study.title}</h1>
-        <p className="text-muted max-w-2xl">{study.summary}</p>
+    <div className="relative overflow-hidden">
+      <ParallaxHero
+        title={study.title}
+        subtitle={study.summary}
+        tags={study.stack}
+      />
 
-        <div className="flex flex-wrap gap-3 mt-4 text-xs text-neutral-300">
-          <span className="pill-soft">
-            <span className="text-neutral-400 mr-1">Role</span>
-            {study.role}
-          </span>
-          <span className="pill-soft">
-            <span className="text-neutral-400 mr-1">Duration</span>
-            {study.duration}
-          </span>
-          {study.stack.map((s) => (
-            <span key={s} className="pill-soft">
-              {s}
-            </span>
-          ))}
+      <section className="max-w-5xl mx-auto px-6 py-24 text-white">
+        <h2 className="text-lg tracking-[0.25em] uppercase text-white/40 mb-8">
+          Visual Overview
+        </h2>
+
+        <div className="relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-[0_0_80px_rgba(255,255,255,0.05)] p-10 overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.04),rgba(0,0,0,0))]" />
+          {diagramMap[slug] ?? null}
         </div>
-      </header>
-
-      <section className="grid gap-6 md:grid-cols-3">
-        <DetailBlock title="Problem" body={study.problem} />
-        <DetailBlock title="Approach" body={study.approach} />
-        <DetailBlock title="Outcome" body={study.outcome} />
       </section>
-
-      <section className="card-soft p-5">
-        <h2 className="text-sm font-semibold mb-3">Signals &amp; Impact</h2>
-        <ul className="list-disc list-inside space-y-2 text-sm text-neutral-200">
-          {study.metrics.map((metric) => (
-            <li key={metric}>{metric}</li>
-          ))}
-        </ul>
-      </section>
-    </article>
-  );
-}
-
-function DetailBlock({ title, body }: { title: string; body: string }) {
-  return (
-    <div className="card-soft p-5">
-      <h2 className="text-sm font-semibold mb-2">{title}</h2>
-      <p className="text-sm text-neutral-200 leading-relaxed">{body}</p>
     </div>
   );
 }

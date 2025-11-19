@@ -1,31 +1,46 @@
-// app/components/Nav.tsx
 "use client";
 
 import Link from "next/link";
-import clsx from "clsx";
+import { motion } from "framer-motion";
 
-const Nav = () => {
+export default function Nav() {
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 px-8 py-4 backdrop-blur-md bg-black/30 border-b border-white/5 flex justify-between items-center">
-      {/* ---- LEFT BRAND ---- */}
-      <Link 
-        href="/" 
-        className="text-[18px] tracking-[0.25em] font-semibold text-white/90 hover:text-white transition-all duration-300"
-      >
-        AKHILA BENDRAM
-      </Link>
+    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-black/10 border-b border-white/5">
+      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 
-      {/* ---- RIGHT NAV LINKS ---- */}
-      <div className="flex gap-10 text-sm tracking-wide text-white/70">
-        <Link href="/vision" className="hover:text-white transition">Vision</Link>
-        <Link href="/work" className="hover:text-white transition">Work</Link>
-        <Link href="/case-studies" className="nav-link text-sm text-white/70 hover:text-white">Case Studies</Link>
+        {/* HOME LINK */}
+        <Link
+          href="/"
+          className="text-lg tracking-wide font-light text-white hover:text-white/80"
+        >
+          Akhila Bendram
+        </Link>
 
-        <Link href="/process" className="hover:text-white transition">Process</Link>
-        <Link href="/contact" className="hover:text-white transition">Contact</Link>
-      </div>
-    </nav>
+        {/* NAV LINKS */}
+        <div className="flex items-center gap-8 text-sm text-white/70">
+          <NavLink href="/#work">Work</NavLink>
+          <NavLink href="/case-studies">Case Studies</NavLink>
+          <NavLink href="/vision">Vision</NavLink>
+          <NavLink href="/process">Process</NavLink>
+          <NavLink href="/#contact">Contact</NavLink>
+        </div>
+      </nav>
+    </header>
   );
-};
+}
 
-export default Nav;
+function NavLink({ href, children }: any) {
+  return (
+    <motion.div whileHover={{ scale: 1.04 }} className="relative">
+      <Link href={href} className="hover:text-white transition-colors">
+        {children}
+      </Link>
+      <motion.span
+        className="absolute left-0 -bottom-1 w-full h-px bg-white/30 origin-left"
+        initial={{ scaleX: 0 }}
+        whileHover={{ scaleX: 1 }}
+        transition={{ duration: 0.3 }}
+      />
+    </motion.div>
+  );
+}
