@@ -1,3 +1,12 @@
 import type { NextConfig } from "next";
-const nextConfig: NextConfig = {};
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    disableCssOpacityPlugin: true,
+    disableLightningcss: true,
+  },
+};
+
+module.exports = nextConfig;
+
 export default nextConfig;

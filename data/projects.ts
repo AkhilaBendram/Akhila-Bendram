@@ -12,7 +12,7 @@ export const projects: Project[] = [
     slug: "resume-analyzer",
     title: "Skillfox",
     summary: "ATS score plus recruiter lens with donuts, summaries, and keyword heatmaps in a rose-gold chrome UI.",
-    meta: "Case Study · Product AI",
+    meta: "Concept · Product AI",
     tags: ["Next.js", "FastAPI", "Framer Motion", "Tailwind"],
     link: "https://skillfox.netlify.app/",
   },

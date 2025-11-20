@@ -47,8 +47,8 @@ export default function HeroChrome() {
           </p>
 
           <p className="mt-3 max-w-2xl text-sm text-white/60">
-            Data A- AI A- UI/UX. Calm motion, metallic depth, quiet luxury
-            systems.
+            Data · AI · UI/UX — engineered clarity, dependable execution, 
+            and design precision that strengthens every team I work with.
           </p>
         </div>
       </section>
