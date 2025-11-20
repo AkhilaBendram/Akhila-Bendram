@@ -131,7 +131,7 @@ export default function AboutSection() {
 
           {/* ---- DOWNLOAD RESUME BUTTON ---- */}
           <a
-            href="..\public\Akhila_DataResume.docx"
+            href="..\public\Akhila_DataResume.pdf"
             download
             className="inline-flex items-center gap-2 bg-white/10 border border-white/20 
                        px-5 py-3 rounded-full text-white text-sm backdrop-blur-sm
