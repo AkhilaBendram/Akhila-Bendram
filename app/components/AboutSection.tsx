@@ -131,15 +131,15 @@ export default function AboutSection() {
 
           {/* ---- DOWNLOAD RESUME BUTTON ---- */}
           <a
-  href="/mnt/data/Akhila_DataResume .pdf"
-  download="Akhila_DataResume.pdf"
-  className="inline-flex items-center gap-2 bg-white/10 border border-white/20 
+            href="/Akhila_DataResume.pdf"
+            download="Akhila_DataResume.pdf"
+            className="inline-flex items-center gap-2 bg-white/10 border border-white/20 
              px-5 py-3 rounded-full text-white text-sm backdrop-blur-sm
              hover:bg-white/20 transition-all shadow-[0_0_20px_rgba(255,255,255,0.07)]"
->
-  <HiOutlineDownload className="text-lg" />
-  Download Resume
-</a>
+          >
+            <HiOutlineDownload className="text-lg" />
+            Download Resume
+          </a>
 
         </motion.div>
       </div>
