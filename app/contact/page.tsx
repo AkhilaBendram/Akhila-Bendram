@@ -11,13 +11,16 @@ export default function ContactPage() {
         the work I do blends logic with emotion, intelligence with intuition.
       </p>
 
-      <a
-        href="mailto:akhilaben25@gmail.com"
-        className="inline-flex items-center gap-3 px-6 py-3 rounded-full 
-                   bg-white/10 border border-white/20 hover:bg-white/20 transition-all"
-      >
-        Email — akhilaben25@gmail.com
-      </a>
+          <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=akhilaben25@gmail.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-3 px-6 py-3 rounded-full 
+                bg-white/10 border border-white/20 hover:bg-white/20 transition-all"
+    >
+      Email — akhilaben25@gmail.com
+    </a>
+
 
       <p className="mt-6 text-white/40 text-sm">
         Based in the US. Available for full-time roles.  
